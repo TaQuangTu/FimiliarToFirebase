@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1085407922831",
+    "firebase_url": "https://usermanagement-1e467.firebaseio.com",
+    "project_id": "usermanagement-1e467",
+    "storage_bucket": "usermanagement-1e467.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085407922831:android:14f2f1e8aa97f80f",
+        "android_client_info": {
+          "package_name": "com.taquangtu132gmail.taquangtu.firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085407922831-qjhptu32p3mhj5s70227pkt72naao3dh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAom2r-8bkhnfr8z8G68Dx_-TkdOlmbXU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
