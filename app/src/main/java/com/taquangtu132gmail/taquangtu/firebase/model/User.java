@@ -4,15 +4,15 @@ public class User
 {
     private int mId;
     private String mName;
-    private String addtionalInformation;
+    private String additionalInformation;
 
     public User() {
     }
 
-    public User(int mId, String mName, String addtionalInformation) {
+    public User(int mId, String mName, String additionalInformation) {
         this.mId = mId;
         this.mName = mName;
-        this.addtionalInformation = addtionalInformation;
+        this.additionalInformation = additionalInformation;
     }
 
     public int getmId() {
@@ -31,11 +31,11 @@ public class User
         this.mName = mName;
     }
 
-    public String getAddtionalInformation() {
-        return addtionalInformation;
+    public String getAdditionalInformation() {
+        return additionalInformation;
     }
 
-    public void setAddtionalInformation(String addtionalInformation) {
-        this.addtionalInformation = addtionalInformation;
+    public void setAddtionalInformation(String additionalInformation) {
+        this.additionalInformation = additionalInformation;
     }
 }

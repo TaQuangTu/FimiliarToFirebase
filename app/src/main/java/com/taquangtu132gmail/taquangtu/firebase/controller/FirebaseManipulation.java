@@ -16,12 +16,19 @@ public class FirebaseManipulation
     {
         mDatabase.child("users").child(""+user.getmId()).setValue(user);
     }
-    public static void addUser(DatabaseReference mDatabase, int id, String name, String addtionalInformation)
+    public static void removeUser(DatabaseReference mDatabase,int id)
     {
-        User user = new User(id,name,addtionalInformation);
-        mDatabase.child("users").child(""+id).setValue(user);
+        mDatabase.child("users").child(""+id).removeValue();
     }
-    public static void setValueEventListener(final MainActivity mainActivity,DatabaseReference mDatabase)
+    public static void updateUser(DatabaseReference mDatabase, User user)
+    {
+        String id = ""+user.getmId();
+        String name = user.getmName();
+        String info = user.getAdditionalInformation();
+        mDatabase.child("users").child(""+id).child("mName").setValue(name);
+        mDatabase.child("users").child(""+id).child("additionalInformation").setValue(info);
+    }
+    public static void setValueEventListener(final MainActivity mainActivity, final DatabaseReference mDatabase)
     {
        mDatabase.child("users").addChildEventListener(new ChildEventListener() {
            @Override
@@ -33,12 +40,37 @@ public class FirebaseManipulation
 
            @Override
            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+               User updatedUser= dataSnapshot.getValue(User.class);
+               int id = updatedUser.getmId();
+               int size = mainActivity.getmUserArrayList().size();
+               for(int i=0;i<size;i++)
+               {
+                   User toBeUpdatedUser = mainActivity.getmUserArrayList().get(i);
+                   if(toBeUpdatedUser.getmId()==id)
+                   {
+                       toBeUpdatedUser.setmName(updatedUser.getmName());
+                       toBeUpdatedUser.setAddtionalInformation(updatedUser.getAdditionalInformation());
+                       mainActivity.getmUserAdapter().notifyDataSetChanged();
+                       return;
+                   }
+               }
            }
 
            @Override
            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
+                User removedUser = dataSnapshot.getValue(User.class);
+                int id = removedUser.getmId();
+                int size = mainActivity.getmUserArrayList().size();
+                for(int i=0;i<size;i++)
+                {
+                    User toBeRemovedUser = mainActivity.getmUserArrayList().get(i);
+                    if(toBeRemovedUser.getmId()==id)
+                    {
+                        mainActivity.getmUserArrayList().remove(i);
+                        mainActivity.getmUserAdapter().notifyDataSetChanged();
+                        return;
+                    }
+                }
            }
 
            @Override
@@ -52,4 +84,5 @@ public class FirebaseManipulation
            }
        });
     }
+
 }

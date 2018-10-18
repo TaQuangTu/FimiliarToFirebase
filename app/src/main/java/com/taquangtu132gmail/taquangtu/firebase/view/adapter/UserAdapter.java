@@ -49,6 +49,7 @@ public class UserAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.mTextViewName = view.findViewById(R.id.tv_name);
             viewHolder.mTextViewId   = view.findViewById(R.id.tv_id);
+            viewHolder.mTextViewInfo = view.findViewById(R.id.tv_info);
             view.setTag(viewHolder);
         }
         else
@@ -57,10 +58,11 @@ public class UserAdapter extends BaseAdapter {
         }
         viewHolder.mTextViewId.setText("Id: "+userList.get(i).getmId());
         viewHolder.mTextViewName.setText("Name: "+userList.get(i).getmName());
+        viewHolder.mTextViewInfo.setText(userList.get(i).getAdditionalInformation());
         return view;
     }
     private class ViewHolder
     {
-        TextView mTextViewName,mTextViewId;
+        TextView mTextViewName,mTextViewId,mTextViewInfo;
     }
 }
